@@ -12,17 +12,16 @@ foodRouter.post('/createFood', async (request, response) => {
             price,
             image,
             name,
-            userId
         },
     })
 
     return response.status(200).json(food)
 })
 
-foodRouter.get('/createList/:id', async (request, response) => {
+foodRouter.get('/List/:id', async (request, response) => {
     const { id } = request.params
 
-    const food = await prisma.foods.findMany({
+    const food = await prisma.foods.findFirst({
         where: {
             userId: id,
         }
